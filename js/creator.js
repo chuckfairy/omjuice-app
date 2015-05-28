@@ -29,6 +29,11 @@ $(document).ready(function() {
         //$(this).tab('show');
     });
 
+    $("a[target='_blank']").click(function(e){
+        e.preventDefault();
+        window.open($(e.currentTarget).attr('href'), '_system', '');
+    });
+
     initCreator();
 
     getSavedJuices();
@@ -345,7 +350,7 @@ function loadJuice( juiceOpt ) {
     creatorFlavorsDiv.innerHTML = "";
     for( var name in juice ) {
 
-        if( !(/(Water|PG|VG|targetAmount|name)/.test(name)) ) {
+        if( !(/(Water|PG|VG|targetAmount|name|Nicotine)/.test(name)) ) {
             addFlavor( name, juice[name] );
         }
 
@@ -446,7 +451,7 @@ function createDisplayRow( trEl, name, juice ) {
 
         for( var field in juice ) {
 
-            if( !(/(Water|PG|VG|targetAmount|name)/.test(field)) ) {
+            if( !(/(Water|PG|VG|targetAmount|name|Nicotine)/.test(field)) ) {
 
                 html.push(field);
 
